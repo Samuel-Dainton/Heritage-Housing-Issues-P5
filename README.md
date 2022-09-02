@@ -1,4 +1,4 @@
-## Dataset Content
+## Dataset Contenther
 * The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). We created then a fictitious user story where predictive analytics can be applied in a real project in the workplace. 
 * The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa; indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
 
@@ -30,34 +30,107 @@
 |SalePrice|Sale Price|34900 - 755000|
 
 
-
-
-
 ## Business Requirements
-As a good friend, you are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximizing the sales price for the inherited properties.
+You are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximizing the sales price for the inherited properties.
 
-Although your friend has an excellent understanding of property prices in her own state and residential area, she fears that basing her estimates for property worth on her current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa. She found a public dataset with house prices for Ames, Iowa, and will provide you with that
+Although your friend has an excellent understanding of property prices in their own state and residential area, they fear that basing their estimates for property worth on their current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where they come from might not be the same in Ames, Iowa. They found a public dataset with house prices for Ames, Iowa, and will provide you with that
 
-* 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualizations of the correlated variables against the sale price to show that.
-* 2 - The client is interested to predict the house sales price from her 4 inherited houses, and any other house in Ames, Iowa.
+* 1 - The client is interested in discovering how their houses attributes correlate with the typical house Sale Price. Therefore, the client expects data visualizations of the correlated variables against Sale Price to show that.
+    * For this we will need to present the data in a way that is easy to understand, shocasing the major variables that effect a houses sales price.
+* 2 - The client is interested to predict the house sales price from their 4 inherited houses, and any other house in Ames, Iowa.
+    * We will need to create a dashboard where the user can enter the key variables of their houses in order to give them a price estimate.
 
 
 ## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision to validate it (them) 
+* 1 - We suspect houses with larger square footing may have had a higher sales price.
+	* A Correlation study can help in this investigation
+* 2 - We suspect that between houses with similar square footing, those with a more recent Year Built date may have had a higher sales price.
+	* A Correlation study can help in this investigation
+* 3 - We suspect that between houses with similar square footing and year built date, those with a more recent Remodel date may have had a higher sales price.
+	* A Correlation study can help in this investigation
+* 4 - We suspect that between houses with similar square footing, those with higher quality and condition scores may have had a higher sales price.
+	* A Correlation study can help in this investigation
 
 
 ## Rationale to map the business requirements to the Data Visualizations and ML tasks
-* List your business requirements and a rationale to map them to the Data Visualizations and ML tasks
+* **Business Requirement 1:** Data Visualization and Correlation study
+	* We will inspect the data related to the houses.
+	* We will conduct a correlation study (Pearson and Spearman) to understand better how the variables are correlated to Sale Price.
+	* We will plot the main variables against Sale Price to visualize insights.
+
+* **Business Requirement 2:** Regression, Cluster, Data Analysis
+	* We want to predict the value of a house. We want to build a regression model to predict the dependant variable.
+	* We want to cluster similar houses, to predict which cluster a prospect will belong in.
+	* We want to understand a cluster profile to present potential options to remodel a house and bring the prospect to a cluster that typically yields a higher sales price.
 
 
 ## ML Business Case
-* In the previous bullet, you potentially visualized a ML task to answer a business requirement. You should frame the business case using the method we covered in the course 
+### Predict Sale Price
+#### Regression Model
+* We want an ML model to predict the sale price of a house. A target variable is a continuous number. We consider a **regression model**, which is supervised and uni-dimensional.
+* Our ideal outcome is to provide our client with reliable insight into what sale price they should expect for their inherited houses.
+* The model success metrics are
+	* At least 0.7 for R2 score, on train and test set
+	* The ML model is considered a failure if:
+		* after 12 months of usage, the model's predictions are 50% off more than 30% of the time. Say, a prediction is >50% off if predicted 10 months and the actual value was 2 months.
+* The output should be a continuous value for sale price. 
+* Heuristics: Currently, there is no approach to predict tenure levels on a prospect.
+* The training data to fit the model comes from the housing price data of Iowa. This dataset contains about 1.5 thousand sales records.
+
+### Cluster Analysis
+#### Clustering Model
+* We want an ML model to cluster similar houses based on build date. It is a supervised model.
+* Our ideal outcome is to provide our client with reliable insight into the value of their house based on its size and how that is effected by the build date.
+* The model success metrics are
+	* at least 0.45 for average silhouette score
+	* The ML model is considered a failure if: model suggests from more than 15 clusters (might become too difficult to interpret in practical terms)
+* The output is defined as an additional column appended to the dataset. This column represents the clusters suggestions. It is a categorical and nominal variable, represented by numbers, starting at 0.
+* The training data to fit the model comes from the housing price data of Iowa. This dataset contains about 1.5 thousand sales records.
+	* Train data - features: all variables, except for: 
 
 
 ## Dashboard Design
-* List all dashboard pages and its content, either block of information or widgets, like: buttons, checkbox, image, or any other item that your dashboard library supports.
-* Eventually, during the project development, you may revisit your dashboard plan to update a give feature (for example, in the beginning of the project you were confident you would use a given plot to display an insight but eventually you needed to use another plot type)
+### Page 1: Quick project summary
+* Quick project summary
+	* Project Terms & Jargon
+	* Describe Project Dataset
+	* State Business Requirements
 
+### Page 2: House Sale Price Study
+* Before the analysis, we knew we wanted this page to answer business requirement 1, but we couldn't know in advance which plots would need to be displayed.
+* After data analysis, we agreed with stakeholders that the page will: 
+	* State business requirement 1
+	* Checkbox: data inspection on house sale data (display the number of rows and columns in the data, and display the first ten rows of the data)
+//	* Display the most correlated variables to house price and the conclusions
+//	* Checkbox: Individual plots showing the house price levels for each correlated variable 
+//	* Checkbox: Parallel plot using Churn and correlated variables 
+
+### Page 3: House Value Estimator
+* State business requirement 2
+* Set of widgets inputs, which relate to the house variables. Each set of inputs is related to a given ML task to predict prospect Churn, Tenure and Cluster.
+* "Run predictive analysis" button that serves the input data to our ML pipelines, and predicts the value of the house. It also shows to which cluster the house belongs to.
+
+### Page 4: Project Hypothesis and Validation
+* Before the analysis, we knew we wanted this page to describe each project hypothesis, the conclusions, and how we validated each. After the data analysis, we can report that:
+///* 1 - We suspect customers are churning with low tenure levels
+	* Correct. The correlation study at Churned Customer Study supports that.
+///* 2 -  A customer survey showed our customers appreciate fibre Optic.
+	* A churned user typically has Fiber Optic, as demonstrated by a Churned Customer Study. The insight will be taken to the survey team for further discussions and investigations.
+
+### Page 5: Predict House Value
+* Considerations and conclusions after the pipeline is trained
+* Present ML pipeline steps
+* Feature importance
+* Pipeline performance
+
+### Page 6: Cluster Analysis
+* Considerations and conclusions after the pipeline is trained
+* Present ML pipeline steps
+* Silhouette plot
+* Clusters distribution across Sale Price
+* Relative Percentage difference of Sale Price in each cluster
+* Most important features to define a cluster
+* Cluster Profile
 
 
 ## Unfixed Bugs
