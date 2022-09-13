@@ -40,6 +40,18 @@ Although your friend has an excellent understanding of property prices in their 
 * 2 - The client is interested to predict the house sales price from their 4 inherited houses, and any other house in Ames, Iowa.
     * We will need to create a dashboard where the user can enter the key variables of their houses in order to give them a price estimate.
 
+## Epics and User Stories
+
+| User | User wants to be able to.. | So they can..    |
+| :---:   | :---: | :---: |
+| Client | Navigate dashboard pages easily   | Easily absorb all information presented by the dashboard   |
+| | View features that correlate with house sale price | Gain an understanding of what factors increase a houses sale price |
+| | Input house key variables into a sales price prediction app | Estimate the value of their houses |
+| Data Scientist | View a breakdown of the ML pipelines | Have an understanding of how the data is prepared and used in predicting sale price |
+
+Most user stories all fall into the epic catagory of dashboard planning, design and development.
+
+![Canban](/readme/canban.png)
 
 ## Hypothesis and how to validate?
 * 1 - We suspect houses with larger square footing may have had a higher sales price.
