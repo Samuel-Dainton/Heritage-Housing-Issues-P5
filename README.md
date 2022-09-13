@@ -51,7 +51,7 @@ Although your friend has an excellent understanding of property prices in their 
 
 Most user stories all fall into the epic catagory of dashboard planning, design and development.
 
-![Canban](/readme/canban.png)
+![Canban](/media/canban.png)
 
 ## Hypothesis and how to validate?
 * 1 - We suspect houses with larger square footing may have had a higher sales price.
@@ -73,7 +73,7 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 * **Business Requirement 2:** Regression, Cluster, Data Analysis
 	* We want to predict the value of a house. We want to build a regression model to predict the dependant variable.
 	* We want to cluster similar houses, to predict which cluster a prospect will belong in.
-	* We want to understand a cluster profile to present potential options to remodel a house and bring the prospect to a cluster that typically yields a higher sales price.
+	* We want to understand a cluster profile which could present potential options to remodel a house and bring the prospect to a cluster that typically yields a higher sales price.
 
 
 ## ML Business Case
