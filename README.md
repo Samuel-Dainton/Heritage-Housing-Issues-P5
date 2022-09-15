@@ -35,7 +35,7 @@ You are requested by your friend, who has received an inheritance from a decease
 
 Although your friend has an excellent understanding of property prices in their own state and residential area, they fear that basing their estimates for property worth on their current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where they come from might not be the same in Ames, Iowa. They found a public dataset with house prices for Ames, Iowa, and will provide you with that
 
-* 1 - The client is interested in discovering how their houses attributes correlate with the typical house Sale Price. Therefore, the client expects data visualizations of the correlated variables against Sale Price to show that.
+* 1 - The client is interested in discovering how house attributes correlate with the typical house Sale Price. Therefore, the client expects data visualizations of the correlated variables against Sale Price to show that.
     * For this we will need to present the data in a way that is easy to understand, shocasing the major variables that effect a houses sales price.
 * 2 - The client is interested to predict the house sales price from their 4 inherited houses, and any other house in Ames, Iowa.
     * We will need to create a dashboard where the user can enter the key variables of their houses in order to give them a price estimate.
