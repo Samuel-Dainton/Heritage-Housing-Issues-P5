@@ -119,7 +119,7 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 * 4 - We suspect that between houses with similar square footing, those with higher quality and condition scores may have had a higher sales price.
 	* Correct. The correlation study on the House Sale Price Study supports this hypothesis.
 
-### Page 5: Predict House Value
+### Page 5: ML: Predict House Value
 * Considerations and conclusions after the pipeline is trained
 * Present ML pipeline steps
 * Feature importance
