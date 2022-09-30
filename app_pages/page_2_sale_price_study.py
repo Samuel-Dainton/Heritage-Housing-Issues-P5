@@ -18,7 +18,7 @@ def page_2_sale_price_study_body():
     df = load_house_data()
 
     # hard copied from churned customer study notebook
-    vars_to_study = ['OverallQual', 'GrLivArea', 'YearBuilt', '1stFlrSF', 'GarageArea']
+    vars_to_study = ['OverallQual', 'GrLivArea', 'YearBuilt', '1stFlrSF', 'GarageArea', 'BsmtExposure']
 
     st.write("### House Value Estimator")
     st.info(
@@ -55,18 +55,40 @@ def page_2_sale_price_study_body():
         f"* Houses with larger sized features such as 1stFlrSF, GarageArea, TotalBsmtSF etc."
         f"* typically have a larger Ground Living Area. \n"
     )
-
-
-    # Parallel plot
-    if st.checkbox("Parallel Plot"):
-        st.write(f"* Information in yellow indicates the profile from a churned customer")
-        parallel_plot()
-
     
-# function created using "02 - Churned Customer Study" notebook code - Parallel Plot section
-def parallel_plot():
-    df = load_house_data()
+
+
+    df_eda = df.filter(vars_to_study + ['SalePrice'])
+    st.write(df_eda.head(10))
+    # Individual plots per variable
+    if st.checkbox("Churn Levels per Variable"):
+        churn_level_per_variable(df_eda)
+    
+
+
+# function created using "02 - Churned Customer Study" notebook code - "Variables Distribution by Churn" section
+def churn_level_per_variable(df_eda):
+    target_var = 'SalePrice'
+    
+    for col in df_eda.drop([target_var], axis=1).columns.to_list():
+        if df_eda[col].dtype == 'object':
+            plot_categorical(df_eda, col, target_var)
+        else:
+            plot_numerical(df_eda, col, target_var)
+
+
+# code copied from "02 - Churned Customer Study" notebook - "Variables Distribution by Churn" section
+def plot_categorical(df, col, target_var):
     fig, axes = plt.subplots(figsize=(12, 5))
-    sns.set_style("darkgrid")
-    sns.lmplot(data=df, x="OverallQual", y="SalePrice", ci=None)
-    st.pyplot(fig)
+    sns.countplot(data=df, x=col, hue=target_var,order = df[col].value_counts().index)
+    plt.xticks(rotation=90) 
+    plt.title(f"{col}", fontsize=20,y=1.05)        
+    st.pyplot(fig) # st.pyplot() renders image, in notebook is plt.show()
+
+
+# code copied from "02 - Churned Customer Study" notebook - "Variables Distribution by Churn" section
+def plot_numerical(df, col, target_var):
+    fig, axes = plt.subplots(figsize=(8, 5))
+    sns.lmplot(data=df, x=col, y=target_var, ci=None) 
+    plt.title(f"{col}", fontsize=20,y=1.05)
+    st.pyplot(fig) # st.pyplot() renders image, in notebook is plt.show()
