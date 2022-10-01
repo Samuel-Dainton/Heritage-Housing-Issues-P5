@@ -11,6 +11,7 @@ import numpy as np
 import plotly.express as px
 
 
+
 def page_2_sale_price_study_body():
 
     
@@ -18,7 +19,7 @@ def page_2_sale_price_study_body():
     df = load_house_data()
 
     # hard copied from churned customer study notebook
-    vars_to_study = ['OverallQual', 'GrLivArea', 'YearBuilt', '1stFlrSF', 'GarageArea', 'BsmtExposure']
+    vars_to_study = ['OverallQual', 'GrLivArea', 'YearBuilt', '1stFlrSF', 'GarageArea']
 
     st.write("### House Value Estimator")
     st.info(
@@ -55,14 +56,18 @@ def page_2_sale_price_study_body():
         f"* Houses with larger sized features such as 1stFlrSF, GarageArea, TotalBsmtSF etc."
         f"* typically have a larger Ground Living Area. \n"
     )
-    
 
 
     df_eda = df.filter(vars_to_study + ['SalePrice'])
-    st.write(df_eda.head(10))
+
     # Individual plots per variable
     if st.checkbox("Churn Levels per Variable"):
         churn_level_per_variable(df_eda)
+        
+    # Parallel plot
+    if st.checkbox("Parallel Plot"):
+        st.write(f"* Information in yellow indicates the profile from a churned customer")
+        parallel_plot_churn(df_eda)
     
 
 
