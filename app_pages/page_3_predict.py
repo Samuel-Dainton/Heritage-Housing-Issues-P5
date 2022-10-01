@@ -1,8 +1,8 @@
 import streamlit as st
-import streamlit as st
 import pandas as pd
 from src.data_management import load_house_data, load_pkl_file
 from src.machine_learning.predictive_analysis_ui import (predict_sale_price)
+from datetime import date
 
 def page_3_predict_body():
 
@@ -74,9 +74,10 @@ def DrawInputsWidgets():
 		feature = "OverallQual"
 		st_widget = st.number_input(
 			label= feature,
-			min_value= df[feature].min()*percentageMin,
-			max_value= df[feature].max()*percentageMax,
-			value= df[feature].median()
+			min_value= 0, 
+			max_value= 10,
+			value= int(df[feature].median()), 
+            step = 1       
 			)
 	X_live[feature] = st_widget
 
@@ -84,9 +85,10 @@ def DrawInputsWidgets():
 		feature = "GrLivArea"
 		st_widget = st.number_input(
 			label= feature,
-			min_value= df[feature].min()*percentageMin,
-			max_value= df[feature].max()*percentageMax,
-			value= df[feature].median()
+			min_value= int(df[feature].min()*percentageMin), 
+			max_value= int(df[feature].max()*percentageMax),
+			value= int(df[feature].median()), 
+            step= 1
 			)
 	X_live[feature] = st_widget
 
@@ -94,9 +96,10 @@ def DrawInputsWidgets():
 		feature = "TotalBsmtSF"
 		st_widget = st.number_input(
 			label= feature,
-			min_value= df[feature].min()*percentageMin,
-			max_value= df[feature].max()*percentageMax,
-			value= df[feature].median()
+			min_value= int(df[feature].min()*percentageMin), 
+			max_value= int(df[feature].max()*percentageMax),
+			value= int(df[feature].median()), 
+            step= 1
 			)
 	X_live[feature] = st_widget
 
@@ -104,9 +107,10 @@ def DrawInputsWidgets():
 		feature = "GarageArea"
 		st_widget = st.number_input(
 			label= feature,
-			min_value= df[feature].min()*percentageMin,
-			max_value= df[feature].max()*percentageMax,
-			value= df[feature].median()
+			min_value= int(df[feature].min()*percentageMin), 
+			max_value= int(df[feature].max()*percentageMax),
+			value= int(df[feature].median()), 
+            step= 1
 			)
 	X_live[feature] = st_widget
 
@@ -114,9 +118,10 @@ def DrawInputsWidgets():
 		feature = "YearBuilt"
 		st_widget = st.number_input(
 			label= feature,
-			min_value= df[feature].min()*percentageMin,
-			max_value= df[feature].max()*percentageMax,
-			value= df[feature].median()
+			min_value= int(df[feature].min()*percentageMin), 
+			max_value= date.today().year,
+			value= int(df[feature].median()), 
+            step= 1
 			)
 	X_live[feature] = st_widget
 
@@ -124,9 +129,10 @@ def DrawInputsWidgets():
 		feature = "YearRemodAdd"
 		st_widget = st.number_input(
 			label= feature,
-			min_value= df[feature].min()*percentageMin,
-			max_value= df[feature].max()*percentageMax,
-			value= df[feature].median()
+			min_value= int(df[feature].min()*percentageMin), 
+			max_value= date.today().year,
+			value= int(df[feature].median()), 
+            step= 1
 			)
 	X_live[feature] = st_widget
 
