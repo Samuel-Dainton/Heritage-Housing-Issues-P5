@@ -14,7 +14,7 @@ def page_4_hypothesis_and_validation_body():
     f"a higher sales price.\n "
 	f"* Correct. There is strong correlation between the two. "
     f"The correlation study on the House Sale Price Study "
-    f"supports this hypothesis.\n\n "
+    f"supports this hypothesis.\n\n"
     f"2 - We suspect that between houses with similar square footing, "
     f"those with a more recent Year Built date may have had a higher "
     f"sales price.\n "

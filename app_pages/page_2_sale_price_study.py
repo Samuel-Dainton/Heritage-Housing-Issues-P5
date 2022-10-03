@@ -61,14 +61,8 @@ def page_2_sale_price_study_body():
     df_eda = df.filter(vars_to_study + ['SalePrice'])
 
     # Individual plots per variable
-    if st.checkbox("Churn Levels per Variable"):
+    if st.checkbox("Sale Price correlation per Variable"):
         churn_level_per_variable(df_eda)
-        
-    # Parallel plot
-    if st.checkbox("Parallel Plot"):
-        st.write(f"* Information in yellow indicates the profile from a churned customer")
-        parallel_plot_churn(df_eda)
-    
 
 
 # function created using "02 - Churned Customer Study" notebook code - "Variables Distribution by Churn" section
@@ -94,6 +88,6 @@ def plot_categorical(df, col, target_var):
 # code copied from "02 - Churned Customer Study" notebook - "Variables Distribution by Churn" section
 def plot_numerical(df, col, target_var):
     fig, axes = plt.subplots(figsize=(8, 5))
-    sns.lmplot(data=df, x=col, y=target_var, ci=None) 
+    fig = sns.lmplot(data=df, x=col, y=target_var, ci=None) 
     plt.title(f"{col}", fontsize=20,y=1.05)
     st.pyplot(fig) # st.pyplot() renders image, in notebook is plt.show()
