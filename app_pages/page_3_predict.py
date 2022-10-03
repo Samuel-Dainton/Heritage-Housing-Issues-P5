@@ -59,8 +59,9 @@ def DrawInputsWidgets():
 	percentageMin, percentageMax = 0.4, 2.0
 
     # we create input widgets for 6 features or more	
-	col1, col2, col3, col4 = st.beta_columns(4)
-	col5, col6, col7, col8 = st.beta_columns(4)
+	col1, col2 = st.beta_columns(2)
+	col3, col4 = st.beta_columns(2)
+	col5, col6 = st.beta_columns(2)
 
 	# We are using these features to feed the ML pipeline
 		
@@ -88,7 +89,7 @@ def DrawInputsWidgets():
 			min_value= int(df[feature].min()*percentageMin), 
 			max_value= int(df[feature].max()*percentageMax),
 			value= int(df[feature].median()), 
-            step= 1
+            step= 100
 			)
 	X_live[feature] = st_widget
 
@@ -99,7 +100,7 @@ def DrawInputsWidgets():
 			min_value= int(df[feature].min()*percentageMin), 
 			max_value= int(df[feature].max()*percentageMax),
 			value= int(df[feature].median()), 
-            step= 1
+            step= 50
 			)
 	X_live[feature] = st_widget
 
@@ -110,7 +111,7 @@ def DrawInputsWidgets():
 			min_value= int(df[feature].min()*percentageMin), 
 			max_value= int(df[feature].max()*percentageMax),
 			value= int(df[feature].median()), 
-            step= 1
+            step= 50
 			)
 	X_live[feature] = st_widget
 
