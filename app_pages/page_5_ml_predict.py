@@ -27,14 +27,15 @@ def page_5_ml_predict_body():
         f"We managed to reach above our target R2 score of 0.7 and did attempt to "
         f"imrove this score further by using a Regressor model with PCA but to no success. \n "
         f"A number of steps were taken to clean and engineer the data for the pipeline, "
-        f"the highest performing steps and hyperparameters of which are listed below. "
+        f"the highest performing steps and hyperparameters on the most important features "
+        f"are listed below. "
     )
 
     st.write("---")
 
     # show pipeline steps
     st.write("* ML pipeline to predict Sale Price")
-    st.write(sale_price_pipe)
+    st.code(sale_price_pipe)
     st.write("---")
 
     # show best features
