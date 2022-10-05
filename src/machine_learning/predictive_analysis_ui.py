@@ -7,10 +7,16 @@ def predict_sale_price(X_live, sale_price_features, sale_price_pipeline):
 
 	# predict
 	sale_price_prediction_proba = sale_price_pipeline.predict(X_live_sale_price)
-	# st.write(sale_price_prediction_proba)
 
 	# create a logic to display the results
 	proba = sale_price_prediction_proba
+	value = float(proba.round(1))
+	amount = '${:,.2f}'.format(value)
+	statement = (
+		f'### With the values given, we estimate this house to be worth {amount} '
+	)
 
+	st.write(statement)
 		
 	st.write(proba)
+

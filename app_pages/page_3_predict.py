@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from src.data_management import load_house_data, load_pkl_file
+from src.data_management import load_house_data, load_pkl_file, load_inherited_house_data
 from src.machine_learning.predictive_analysis_ui import predict_sale_price
 from datetime import date
 
@@ -23,10 +23,10 @@ def page_3_predict_body():
 	)
 
 	st.write("---")
-
+	st.write("Below you can enter the data of the houses you want an estimate price for. "
+			"The default values are set to median values of the data set, incase you are missing any. ")
 	
 	# Generate Live Data
-	# check_variables_for_UI(sale_price_features)
 	X_live = DrawInputsWidgets()
 
 
@@ -34,23 +34,21 @@ def page_3_predict_body():
 	if st.button("Run Predictive Analysis"): 
 		predict_sale_price(X_live, sale_price_features, sale_price_pipe)
 
-			
+	st.write("---")
+	st.write("Here is the info for the key values of the clients inherited houses. ")
+	
+	in_df = load_inherited_house_data()
+	filtered_df = in_df[["OverallQual", "GrLivArea", "TotalBsmtSF", "GarageArea", "YearBuilt", "YearRemodAdd"]]	
+		
+	st.write(filtered_df)
 
-
-
-def check_variables_for_UI(sale_price_features):
-	import itertools
-
-	# The widgets inputs are the features used in all pipelines (sale_price)
-	# We combine them only with unique values
-	combined_features = set(
-		list(
-			itertools.chain(sale_price_features)
-			)
-		)
-	st.write(f"* There are {len(combined_features)} features for the UI: \n\n {combined_features}")
-
-
+	st.write("After running them through the prediction app, their estimated prices are the following. \n\n "
+			"* $126,449 \n"
+			"* $150,322 \n"
+			"* $170,148 \n"
+			"* $181,897 ")
+	
+	st.write("---")
 
 def DrawInputsWidgets():
 
