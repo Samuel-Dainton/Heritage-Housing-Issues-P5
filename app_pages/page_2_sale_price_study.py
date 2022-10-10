@@ -1,14 +1,9 @@
 import streamlit as st
-
-import streamlit as st
 from src.data_management import load_house_data
 
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_style("whitegrid")
-
-import numpy as np
-import plotly.express as px
 
 
 

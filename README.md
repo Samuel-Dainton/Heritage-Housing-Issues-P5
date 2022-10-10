@@ -1,3 +1,8 @@
+# Heritage Housing Issues
+* A data analytics project to clean and engineer data for an ML Model that predicts the value of a house in Ames, Iowa and to help visualise the most important features considered when predicting that value.
+
+
+
 ## Business Requirements
 You are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximizing the sales price for the inherited properties.
 
@@ -7,6 +12,8 @@ Although your friend has an excellent understanding of property prices in their 
     * For this we will need to present the data in a way that is easy to understand, shocasing the major variables that effect a houses sales price.
 * 2 - The client is interested to predict the house sales price from their 4 inherited houses, and any other house in Ames, Iowa.
     * We will need to create a dashboard where the user can enter the key variables of their houses in order to give them a price estimate.
+
+
 
 ## Dataset Content
 
@@ -53,6 +60,8 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 
 ![Canban](/media/canban.png)
 
+
+
 ## Hypothesis and how to validate?
 * 1 - We suspect houses with larger square footing may have had a higher sales price.
 	* A Correlation study can help in this investigation
@@ -62,6 +71,7 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 	* A Correlation study can help in this investigation
 * 4 - We suspect that between houses with similar square footing, those with higher quality and condition scores may have had a higher sales price.
 	* A Correlation study can help in this investigation
+
 
 
 ## Rationale to map the business requirements to the Data Visualizations and ML tasks
@@ -76,6 +86,7 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 	* We want to understand a cluster profile which could present potential options to remodel a house and bring the prospect to a cluster that typically yields a higher sales price.
 
 
+
 ## ML Business Case
 ### Predict Sale Price
 #### Regression Model
@@ -86,6 +97,15 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 	* The ML model is considered a failure if:
 		* after 12 months of usage, the model's predictions are 50% off more than 30% of the time. Say, a prediction is >50% off if predicted 10 months and the actual value was 2 months.
 * The output should be a continuous value for sale price. 
+
+### Data Decision Making
+* On a few occasions I was questioned for using the ArbitraryNumberImputer for filling the missing data of `2ndFlrSf, EnclosedPorch, MasVnrArea and WoodDeckSF` instead of MeanMedianImputer. My reasoning for this was that in all of these variables the Mode value is 0. `EnclosedPorch` for example has 90% of it's data missing. And of the 10% remaining, 8% of it is zeroes. This is similar for all variables relating to area or size of features, which suggests that in the data collection these fields were often left blank instead of filling them with 0 when a house simply did not have a 2nd floor, wood deck or other feature.
+
+* I wanted to fill the missing values for `GarageYrBlt` with the same values as `YearBuilt` due the two almost always sharing the same date or the Garage Built date being just one or two years after. However, I ran into an error that I wasn't able to move past, the method I used to `fillna` the empty values in my pipeline was at some point causing a ValueError when put though the hyperparameter optimization search. I wasn't able to fix this as so opted to use the MeanMedianImputer instead. This would lead to some odd data, like houses having garages built before the house, but ultimately wouldn't cause much of an impact to the model.
+
+* Lastly, I wanted to use the OutlierTrimmer instead of the Windsorizer on `SalePrice, GrLivArea and TotalArea`. To do so however would require me to make a number of changes to the order of the pipeline. Currently the train and test sets are split and then have the cleaning and engineering steps applied to them in the pipeline. The problem with this, is that by splitting the sets and then trimming them of outliers, the sets always end up with imbalanced ammounts of data and cause the pipeline to get stuck. 
+
+
 
 ## Dashboard Design
 ### Page 1: Quick project summary
@@ -126,8 +146,11 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 * Pipeline performance
 
 
+
 ## Unfixed Bugs
-* You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed.
+* There is one unsolved bug in page 5 of the app, related to the evaluate_pipeline.py file, where for some reason in the app on the last page, the function always outputs an extra line of 'None'. I've spent a great deal of my tutors time and my own searching for why this might be but haven't come across a reason for it.
+
+
 
 ## Deployment
 ### Heroku
@@ -142,28 +165,30 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 5. The deployment process should happen smoothly in case all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
 
 
+
 ## Main Data Analysis and Machine Learning Libraries
-* Here you should list the libraries you used in the project and provide example(s) on how you used these libraries.
+
+* Matplotlib - Creates various graphs and plots to visualise the data. 
+* Seaborn - For visualising the data in the Streamlit app with plots, graphs and more.
+* ppscore - Used to study the power predictive score of variables against one another.
+* Streamlit - Creating the app for the presenting the study.
+* Feature-Engine - Major library for engineering the data for the pipeline.
+* Scikit-Learn - Creating the pipeline and applying various algorithms, feature engineering steps and more to it.
+* Numpy - To process arrays that store values, aka data. It facilitates math operations and their vectorization.
+* Pandas and Pandas-Profiling - For data analysis, data exploration, data manipulation, data visualization.
+
 
 
 ## Credits 
-
-* In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
 ### Content 
 
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-- The photos used on the home and sign up page are from This Open Source site
-- The images used for the gallery page were taken from this other open source site
+- The template for this project was created by Code Institute
+- A number of functions were built for this project by Code Institute and are credited throughout the notebooks.
+- The dataset is provided by [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data)
+- All learning material was sourced through either the Code Institute program or the documentation of the various libraries used.
 
 
 
-## Acknowledgements (optional)
-* In case you would like to thank the people that provided support through this project.
+## Acknowledgements
+* A big thank you to Niel McEwen of Code Institute who is quick and eager to help with the many questions pouring through the data analytics slack channel.
 
