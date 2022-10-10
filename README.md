@@ -80,10 +80,10 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 	* We will conduct a correlation study (Pearson and Spearman) to understand better how the variables are correlated to Sale Price.
 	* We will plot the main variables against Sale Price to visualize insights.
 
-* **Business Requirement 2:** Regression, Cluster, Data Analysis
+* **Business Requirement 2:** Regression, Data Analysis
 	* We want to predict the value of a house. We want to build a regression model to predict the dependant variable.
-	* We want to cluster similar houses, to predict which cluster a prospect will belong in.
-	* We want to understand a cluster profile which could present potential options to remodel a house and bring the prospect to a cluster that typically yields a higher sales price.
+	* We want to make plots to visualise the train and test sets predictions vs the actual.
+	* We want to run regression evaluation to demonstrate the R2 Score and Mean Absolute Error.
 
 
 
@@ -190,5 +190,5 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 
 
 ## Acknowledgements
-* A big thank you to Niel McEwen of Code Institute who is quick and eager to help with the many questions pouring through the data analytics slack channel.
+* A big thank you to Niel McEwen of Code Institute who is quick and eager to help with the many questions I had during my studies.
 

@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from src.data_management import load_house_data, load_pkl_file
-from src.machine_learning.evaluate_pipeline import regression_performance
+from src.machine_learning.evaluate_pipeline import regression_performance, regression_evaluation_plots
 
 
 def page_5_ml_predict_body():
@@ -13,7 +13,7 @@ def page_5_ml_predict_body():
 
     # load tenure pipeline files
     version = 'v1'
-    sale_price_pipe = load_pkl_file(f"outputs/ml_pipeline/predict_sale_price/{version}/best_regressor_pipeline.pkl")
+    best_regressor_pipeline = load_pkl_file(f"outputs/ml_pipeline/predict_sale_price/{version}/best_regressor_pipeline.pkl")
     sale_price_features = pd.read_csv(f"outputs/ml_pipeline/predict_sale_price/{version}/X_train.csv")
     sale_price_importance = plt.imread(f"outputs/ml_pipeline/predict_sale_price/{version}/features_importance.png")
     X_train = pd.read_csv(f"outputs/ml_pipeline/predict_sale_price/{version}/X_train.csv")
@@ -35,7 +35,7 @@ def page_5_ml_predict_body():
 
     # show pipeline steps
     st.write("* ML pipeline to predict Sale Price")
-    st.code(sale_price_pipe)
+    st.code(best_regressor_pipeline)
     st.write("---")
 
     # show best features
@@ -49,4 +49,8 @@ def page_5_ml_predict_body():
     st.write("### Pipeline Performance")
     regression_performance(X_train=X_train, y_train=y_train,
                         X_test=X_test, y_test=y_test,
-                        pipeline=sale_price_pipe)
+                        pipeline=best_regressor_pipeline)
+
+    regression_evaluation_plots(X_train=X_train, y_train=y_train,
+                        X_test=X_test, y_test=y_test,
+                        pipeline=best_regressor_pipeline)   
