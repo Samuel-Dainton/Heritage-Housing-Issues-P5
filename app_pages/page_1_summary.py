@@ -4,26 +4,6 @@ def page_1_summary_body():
 
     st.write("### Quick Project Summary")
 
-    # text based on README file - "Dataset Content" section
-    st.info(
-        f"**Project Terms & Jargon**\n"
-        f"* **SalePrice** is the price a house is sold for and is our target variable.\n "
-        f"* There are many abbreviated terms used to describe features of the houses in "
-        f"* the data set. In this app we will expand on all of them but for further "
-        f"* clarification the full dataset and explanation  of it's terms can be found [here](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).\n\n "
-        f"**Project Dataset**\n"
-        f"* The dataset has almost 1.5 thousand rows of data and represents housing records from "
-        f"Ames, Iowa; indicating house profile (Floor Area, Basement, Garage, Kitchen, "
-        f"Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses "
-        f"built between 1872 and 2010. "
-        )
-
-    # Link to README file, so the users can have access to full project documentation
-    st.write(
-        f"* For additional information, please visit and read the "
-        f"[Project README file](https://github.com/Samuel-Dainton/Heritage-Housing-Issues-P5).")
-    
-
     # copied from README file - "Business Requirements" section
     st.success(
         f"The project has 2 business requirements:\n"
@@ -33,3 +13,27 @@ def page_1_summary_body():
         f"* 2 - The client is interested to predict the house sales price from their 4 "
         f"inherited houses, and any other house in Ames, Iowa. "
         )
+
+    # text based on README file - "Dataset Content" section
+    st.info(
+        f"**Project Terms & Jargon**\n"
+        f"* **SalePrice** is the price a house is sold for and is our target variable. \n"
+        f"* There are many abbreviated terms used to describe features of the houses in "
+        f"* the data set. In this app we will expand on all of them but for further "
+        f"* clarification the full dataset and explanation  of it's terms can be found "
+        f" [here](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).\n\n "
+        f"**Project Dataset**\n"
+        f"* The dataset has almost 1.5 thousand rows of data and represents housing records from "
+        f"Ames, Iowa; indicating house profile (Floor Area, Basement, Garage, Kitchen, "
+        f"Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses "
+        f"built between 1872 and 2010. "
+        )
+
+    # Link to README file
+    st.write(
+        f"* For additional information and further supporting information "
+        f" on the steps taken to produce the project, please visit the following link and read the "
+        f"[Project README file](https://github.com/Samuel-Dainton/Heritage-Housing-Issues-P5).")
+    
+
+
