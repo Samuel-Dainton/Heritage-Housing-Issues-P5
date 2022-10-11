@@ -37,7 +37,7 @@ def page_2_sale_price_study_body():
     # Correlation Study Summary
     st.write(
         f"* Pearson and Spearman tests were first run to determine which variables to "
-        f" inspect further. "
+        f" inspect further. \n"
         f"* A correlation study was then conducted in the notebook to better understand how "
         f"those variables were correlated to SalePrice. \n"
         f"* Further correlation studies were conducted to understand the relation between "
