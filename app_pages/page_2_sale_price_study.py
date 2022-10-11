@@ -7,7 +7,6 @@ from src.machine_learning.price_study import regression_per_variable, DisplayCor
 
 
 
-
 def page_2_sale_price_study_body():
 
     
@@ -44,7 +43,10 @@ def page_2_sale_price_study_body():
         f"the quality of a house and the year it was built or remodeled. \n"
         f"* One final correlation study was conducted to show houses of a similar size "
         f"across different grades of overall quality against sale price. \n\n"
-        f"Some of the variables that correlate most with Sale Price are: **{vars_to_study}**"
+        f"Some of the variables that correlate most with Sale Price and were "
+        f"studied further are: **{vars_to_study}** \n\n"
+        f"The 2 key variables related to a houses sale price are "
+        f"**Overall Quality and Ground Living Area**. "
     )
 
     # Text based on "02 - Churned Customer Study" notebook - "Conclusions and Next steps" section
