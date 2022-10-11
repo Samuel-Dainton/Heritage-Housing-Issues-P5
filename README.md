@@ -1,7 +1,7 @@
 # Heritage Housing Issues
 * A data analytics project to clean and engineer data for an ML Model that predicts the value of a house in Ames, Iowa and to help visualize the most important features considered when predicting that value.
 
-
+[Live Link to the Project Dashboard](https://heritage-housing-sam-dainton.herokuapp.com/)
 
 ## Business Requirements
 You are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximizing the sales price for the inherited properties.
@@ -134,7 +134,8 @@ Most user stories all fall into the epic category of dashboard planning, design 
 * "Run predictive analysis" button that serves the input data to our ML pipelines, and predicts the value of the house.
 
 ### Page 4: Project Hypothesis and Validation
-* Before the analysis, we knew we wanted this page to describe each project hypothesis, the conclusions, and how we validated each. After the data analysis, we can report that:
+Before the analysis, we knew we wanted this page to describe each project hypothesis, the conclusions, and how we validated each. After the data analysis, we can report that:
+
 * 1 - We suspect houses with larger square footing may have had a higher sales price.
 
 	* Correct. There is strong correlation between the two. The correlation study on the House Sale Price Study supports this hypothesis.

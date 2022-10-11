@@ -5,7 +5,7 @@ import seaborn as sns
 import numpy as np
 from sklearn.metrics import r2_score, mean_absolute_error 
 
-
+# Generates the R2 Score and Mean Absolute Error for the test and train sets
 def regression_performance(X_train, y_train, X_test, y_test,pipeline):
 	st.write("Model Evaluation \n")
 	st.info("Train Set")
@@ -18,6 +18,7 @@ def regression_evaluation(X,y,pipeline):
  	st.write('R2 Score:', r2_score(y, prediction).round(3))  
  	st.write('Mean Absolute Error:', mean_absolute_error(y, prediction).round(3))
 
+# Generates scatter plots of the test and train sets to demonstrate their accuracy
 def regression_evaluation_plots(X_train, y_train, X_test, y_test,pipeline, alpha_scatter=0.5):
 
 	y_train = y_train.to_numpy().flatten()
