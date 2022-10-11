@@ -17,7 +17,7 @@ def page_2_sale_price_study_body():
     # hard copied from churned customer study notebook
     vars_to_study = ['OverallQual', 'GrLivArea', 'YearBuilt', '1stFlrSF', 'GarageArea']
 
-    st.write("### House Value Estimator")
+    st.write("### House Sale Price Study")
     st.info(
         f"* The client is interested in understanding the patterns from the house sales data set, "
         f"so that they can learn what the most relevant variables correlated to SalePrice are."
