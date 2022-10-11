@@ -1,9 +1,10 @@
 import streamlit as st
-from src.data_management import load_house_data
-
-import matplotlib.pyplot as plt
 import seaborn as sns
-sns.set_style("whitegrid")
+import matplotlib.pyplot as plt
+
+from src.data_management import load_house_data
+from src.price_study import regression_per_variable
+
 
 
 
@@ -23,7 +24,7 @@ def page_2_sale_price_study_body():
     )
 
     # inspect data
-    if st.checkbox("Inspect Customer Base"):
+    if st.checkbox("Inspect House Database"):
         st.write(
             f"* The dataset has {df.shape[0]} rows and {df.shape[1]} columns, "
             f"printed below are the first 10 rows.")
@@ -73,15 +74,3 @@ def page_2_sale_price_study_body():
         plt.title(f"Houses of Similar Area across Quality", fontsize=20,y=1.05)
         st.pyplot(fig) 
 
-
-def regression_per_variable(df_eda, target_var):
-    
-    for col in df_eda.drop([target_var], axis=1).columns.to_list():
-            plot_numerical(df_eda, col, target_var)
-
-
-def plot_numerical(df, col, target_var):
-    fig, axes = plt.subplots(figsize=(8, 5))
-    fig = sns.lmplot(data=df, x=col, y=target_var, ci=None) 
-    plt.title(f"{col}", fontsize=20,y=1.05)
-    st.pyplot(fig) 
