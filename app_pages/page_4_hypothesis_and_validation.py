@@ -12,7 +12,7 @@ def page_4_hypothesis_and_validation_body():
     st.success(
     f"1 - We suspect houses with larger square footing may have had "
     f"a higher sales price.\n "
-	f"* Correct. There is strong correlation between the two. "
+	f"* Correct. There is a strong correlation between the two. "
     f"The correlation study on the House Sale Price Study "
     f"supports this hypothesis.\n\n"
     f"2 - We suspect that between houses with similar square footing, "
@@ -32,6 +32,6 @@ def page_4_hypothesis_and_validation_body():
     f"4 - We suspect that between houses with similar square footing, "
     f"those with higher quality and condition scores may have had a higher "
     f"sales price.\n "
-	f"* Correct. There is strong correlation between the two variables."
+	f"* Correct. There is a strong correlation between the two variables."
     f"The correlation study on the House Sale Price Study supports this hypothesis."
     )

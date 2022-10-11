@@ -1,5 +1,5 @@
 # Heritage Housing Issues
-* A data analytics project to clean and engineer data for an ML Model that predicts the value of a house in Ames, Iowa and to help visualise the most important features considered when predicting that value.
+* A data analytics project to clean and engineer data for an ML Model that predicts the value of a house in Ames, Iowa and to help visualize the most important features considered when predicting that value.
 
 
 
@@ -9,11 +9,11 @@ You are requested by your friend, who has received an inheritance from a decease
 Although your friend has an excellent understanding of property prices in their own state and residential area, they fear that basing their estimates for property worth on their current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where they come from might not be the same in Ames, Iowa. They found a public dataset with house prices for Ames, Iowa, and will provide you with that
 
 * 1 - The client is interested in discovering how house attributes correlate with the typical house Sale Price. Therefore, the client expects data visualizations of the correlated variables against Sale Price to show that.
-    * For this we will need to present the data in a way that is easy to understand, shocasing the major variables that effect a houses sales price.
-* 2 - The client is interested to predict the house sales price from their 4 inherited houses, and any other house in Ames, Iowa.
+    * For this we will need to present the data in a way that is easy to understand, showcasing the major variables that affect a house's sale price.
+* 2 - The client is interested in predicting the house sales price from their 4 inherited houses, and any other house in Ames, Iowa.
     * We will need to create a dashboard where the user can enter the key variables of their houses in order to give them a price estimate.
 
-
+---
 
 ## Dataset Content
 
@@ -25,7 +25,7 @@ Although your friend has an excellent understanding of property prices in their 
 |1stFlrSF|First Floor square feet|334 - 4692|
 |2ndFlrSF|Second floor square feet|0 - 2065|
 |BedroomAbvGr|Bedrooms above grade (does NOT include basement bedrooms)|0 - 8|
-|BsmtExposure|Refers to walkout or garden level walls|Gd: Good Exposure; Av: Average Exposure; Mn: Mimimum Exposure; No: No Exposure; None: No Basement|
+|BsmtExposure|Refers to walkout or garden level walls|Gd: Good Exposure; Av: Average Exposure; Mn: Minimum Exposure; No: No Exposure; None: No Basement|
 |BsmtFinType1|Rating of basement finished area|GLQ: Good Living Quarters; ALQ: Average Living Quarters; BLQ: Below Average Living Quarters; Rec: Average Rec Room; LwQ: Low Quality; Unf: Unfinshed; None: No Basement|
 |BsmtFinSF1|Type 1 finished square feet|0 - 5644|
 |BsmtUnfSF|Unfinished square feet of basement area|0 - 2336|
@@ -47,6 +47,8 @@ Although your friend has an excellent understanding of property prices in their 
 |YearRemodAdd|Remodel date (same as construction date if no remodeling or additions)|1950 - 2010|
 |SalePrice|Sale Price|34900 - 755000|
 
+---
+
 ## Epics and User Stories
 
 | User | User wants to be able to.. | So they can..    |
@@ -56,11 +58,11 @@ Although your friend has an excellent understanding of property prices in their 
 | | Input house key variables into a sales price prediction app | Estimate the value of their houses |
 | Data Scientist | View a breakdown of the ML pipelines | Have an understanding of how the data is prepared and used in predicting sale price |
 
-Most user stories all fall into the epic catagory of dashboard planning, design and development.
+Most user stories all fall into the epic category of dashboard planning, design and development.
 
 ![Canban](/media/canban.png)
 
-
+---
 
 ## Hypothesis and how to validate?
 * 1 - We suspect houses with larger square footing may have had a higher sales price.
@@ -72,7 +74,7 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 * 4 - We suspect that between houses with similar square footing, those with higher quality and condition scores may have had a higher sales price.
 	* A Correlation study can help in this investigation
 
-
+---
 
 ## Rationale to map the business requirements to the Data Visualizations and ML tasks
 * **Business Requirement 1:** Data Visualization and Correlation study
@@ -81,15 +83,17 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 	* We will plot the main variables against Sale Price to visualize insights.
 
 * **Business Requirement 2:** Regression, Data Analysis
-	* We want to predict the value of a house. We want to build a regression model to predict the dependant variable.
-	* We want to make plots to visualise the train and test sets predictions vs the actual.
+	* We want to predict the value of a house. We want to build a regression model to predict the dependent variable.
+	* We want to make plots to visualize the train and test sets predictions vs the actual.
 	* We want to run regression evaluation to demonstrate the R2 Score and Mean Absolute Error.
 
-
+---
 
 ## ML Business Case
+
 ### Predict Sale Price
 #### Regression Model
+
 * We want an ML model to predict the sale price of a house. A target variable is a continuous number. We consider a **regression model**, which is supervised and uni-dimensional.
 * Our ideal outcome is to provide our client with reliable insight into what sale price they should expect for their inherited houses.
 * The model success metrics are
@@ -103,11 +107,12 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 
 * I wanted to fill the missing values for `GarageYrBlt` with the same values as `YearBuilt` due the two almost always sharing the same date or the Garage Built date being just one or two years after. However, I ran into an error that I wasn't able to move past, the method I used to `fillna` the empty values in my pipeline was at some point causing a ValueError when put though the hyperparameter optimization search. I wasn't able to fix this as so opted to use the MeanMedianImputer instead. This would lead to some odd data, like houses having garages built before the house, but ultimately wouldn't cause much of an impact to the model.
 
-* Lastly, I wanted to use the OutlierTrimmer instead of the Windsorizer on `SalePrice, GrLivArea and TotalArea`. To do so however would require me to make a number of changes to the order of the pipeline. Currently the train and test sets are split and then have the cleaning and engineering steps applied to them in the pipeline. The problem with this, is that by splitting the sets and then trimming them of outliers, the sets always end up with imbalanced ammounts of data and cause the pipeline to get stuck. 
+* Lastly, I wanted to use the OutlierTrimmer instead of the Windsorizer on `SalePrice, GrLivArea and TotalArea`. To do so however would require me to make a number of changes to the order of the pipeline. Currently the train and test sets are split and then have the cleaning and engineering steps applied to them in the pipeline. The problem with this, is that by splitting the sets and then trimming them of outliers, the sets always end up with imbalanced amounts of data and cause the pipeline to get stuck. 
 
-
+---
 
 ## Dashboard Design
+
 ### Page 1: Quick project summary
 * Quick project summary
 	* Project Terms & Jargon
@@ -131,13 +136,20 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 ### Page 4: Project Hypothesis and Validation
 * Before the analysis, we knew we wanted this page to describe each project hypothesis, the conclusions, and how we validated each. After the data analysis, we can report that:
 * 1 - We suspect houses with larger square footing may have had a higher sales price.
-	* Correct. The correlation study on the House Sale Price Study supports this hypothesis.
+
+	* Correct. There is strong correlation between the two. The correlation study on the House Sale Price Study supports this hypothesis.
+
 * 2 - We suspect that between houses with similar square footing, those with a more recent Year Built date may have had a higher sales price.
-	* Incorrect. There is only small correlation between the two. The correlation study on the House Sale Price Study supports this.
+
+	* Correct. There is moderate correlation between the two. The correlation study on the House Sale Price Study supports this. It's worth noting that houses with a more recent Year Built date are typically higher in Overall Quality which has much stronger correlationto Sale Price.
+
 * 3 - We suspect that between houses with similar square footing and year built date, those with a more recent Remodel date may have had a higher sales price.
-	* Incorrect. This showed even less of a correlation than our hypothesis on YearBuilt. 
+
+	* Correct. There is weak to moderate correlation between the two. Again, it is worth noting that there is a relationship between houses with a more recent Remodel date being higher in Overall Quality
+
 * 4 - We suspect that between houses with similar square footing, those with higher quality and condition scores may have had a higher sales price.
-	* Correct. The correlation study on the House Sale Price Study supports this hypothesis.
+
+	* Correct. There is strong correlation between the two variables.The correlation study on the House Sale Price Study supports this hypothesis.
 
 ### Page 5: ML: Predict House Value
 * Considerations and conclusions after the pipeline is trained
@@ -145,12 +157,12 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 * Feature importance
 * Pipeline performance
 
-
+---
 
 ## Unfixed Bugs
 * There is one unsolved bug in page 5 of the app, related to the evaluate_pipeline.py file, where for some reason in the app on the last page, the function always outputs an extra line of 'None'. I've spent a great deal of my tutors time and my own searching for why this might be but haven't come across a reason for it.
 
-
+---
 
 ## Deployment
 ### Heroku
@@ -164,20 +176,20 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 4. Select the branch you want to deploy, then click Deploy Branch.
 5. The deployment process should happen smoothly in case all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
 
-
+---
 
 ## Main Data Analysis and Machine Learning Libraries
 
-* Matplotlib - Creates various graphs and plots to visualise the data. 
-* Seaborn - For visualising the data in the Streamlit app with plots, graphs and more.
+* Matplotlib - Creates various graphs and plots to visualize the data. 
+* Seaborn - For visualizing the data in the Streamlit app with plots, graphs and more.
 * ppscore - Used to study the power predictive score of variables against one another.
-* Streamlit - Creating the app for the presenting the study.
+* Streamlit - Creating the app to present the study.
 * Feature-Engine - Major library for engineering the data for the pipeline.
 * Scikit-Learn - Creating the pipeline and applying various algorithms, feature engineering steps and more to it.
 * Numpy - To process arrays that store values, aka data. It facilitates math operations and their vectorization.
 * Pandas and Pandas-Profiling - For data analysis, data exploration, data manipulation, data visualization.
 
-
+---
 
 ## Credits 
 ### Content 
@@ -187,7 +199,7 @@ Most user stories all fall into the epic catagory of dashboard planning, design 
 - The dataset is provided by [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data)
 - All learning material was sourced through either the Code Institute program or the documentation of the various libraries used.
 
-
+---
 
 ## Acknowledgements
 * A big thank you to Niel McEwen of Code Institute who is quick and eager to help with the many questions I had during my studies.

@@ -25,7 +25,7 @@ def page_5_ml_predict_body():
     st.info(
         f"* We wanted to have a Regressor model to predict Sale Price for houses. "
         f"We managed to reach above our target R2 score of 0.7 and did attempt to "
-        f"imrove this score further by using a Regressor model with PCA but to no success. \n "
+        f"improve this score further by using a Regression model with PCA but to no success. \n "
         f"A number of steps were taken to clean and engineer the data for the pipeline, "
         f"the highest performing steps and hyperparameters on the most important features "
         f"are listed below. "

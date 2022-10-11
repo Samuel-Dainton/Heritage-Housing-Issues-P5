@@ -6,11 +6,11 @@ def page_1_summary_body():
 
     # text based on README file - "Dataset Content" section
     st.info(
-        f"**Project Terms & Jargons**\n"
-        f"* **SalePrice** is the price a house is sold for and is our target variable.\n"
-        f"* There are many abreviated terms used to describe features of the houses in"
-        f"* the data set. In this app we will expand on all of them but for further"
-        f"* clarification the full dataset and explination of it's terms can be found [here](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).\n\n"
+        f"**Project Terms & Jargon**\n"
+        f"* **SalePrice** is the price a house is sold for and is our target variable.\n "
+        f"* There are many abbreviated terms used to describe features of the houses in "
+        f"* the data set. In this app we will expand on all of them but for further "
+        f"* clarification the full dataset and explanation  of it's terms can be found [here](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).\n\n "
         f"**Project Dataset**\n"
         f"* The dataset has almost 1.5 thousand rows of data and represents housing records from "
         f"Ames, Iowa; indicating house profile (Floor Area, Basement, Garage, Kitchen, "

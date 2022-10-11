@@ -23,8 +23,8 @@ def page_3_predict_body():
 	)
 
 	st.write("---")
-	st.write("Below you can enter the data of the houses you want an estimate price for. "
-			"The default values are set to median values of the data set, incase you are missing any. ")
+	st.write("Below you can enter the data of the houses you want an estimated price for. "
+			"The default values are set to median values of the data set, in case you are missing any. ")
 	
 	# Generate Live Data
 	X_live = DrawInputsWidgets()
