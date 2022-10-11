@@ -3,7 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 from src.data_management import load_house_data
-from src.price_study import regression_per_variable
+from src.machine_learning.price_study import regression_per_variable, DisplayCorrAndPPS, CalculateCorrAndPPS
 
 
 
@@ -36,13 +36,15 @@ def page_2_sale_price_study_body():
 
     # Correlation Study Summary
     st.write(
-        f"* A correlation study was conducted in the notebook to better understand how "
-        f"the variables are correlated to SalePrice. \n"
+        f"* Pearson and Spearman tests were first run to determine which variables to "
+        f" inspect further. "
+        f"* A correlation study was then conducted in the notebook to better understand how "
+        f"those variables were correlated to SalePrice. \n"
         f"* Further correlation studies were conducted to understand the relation between "
         f"the quality of a house and the year it was built or remodeled. \n"
         f"* One final correlation study was conducted to show houses of a similar size "
         f"across different grades of overall quality against sale price. \n\n"
-        f"Some of the most correlated variables to Sale Price are: **{vars_to_study}**"
+        f"Some of the variables that correlate most with Sale Price are: **{vars_to_study}**"
     )
 
     # Text based on "02 - Churned Customer Study" notebook - "Conclusions and Next steps" section
@@ -74,3 +76,10 @@ def page_2_sale_price_study_body():
         plt.title(f"Houses of Similar Area across Quality", fontsize=20,y=1.05)
         st.pyplot(fig) 
 
+    if st.checkbox("Heatmaps of all Variables and Correlation"):
+            df_corr_pearson, df_corr_spearman, pps_matrix = CalculateCorrAndPPS(df)
+            DisplayCorrAndPPS(df_corr_pearson=df_corr_pearson,
+                df_corr_spearman=df_corr_spearman, 
+                pps_matrix=pps_matrix,
+                CorrThreshold=0.6, PPS_Threshold=0.15,
+                figsize=(10,10), font_annot=8)
